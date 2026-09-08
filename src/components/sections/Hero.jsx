@@ -1,14 +1,7 @@
 // frontend/src/components/sections/Hero.jsx
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import {
-  FiArrowDown,
-  FiFileText,
-  FiMail,
-  FiGithub,
-  FiLinkedin,
-} from "react-icons/fi";
-import { SiLeetcode } from "react-icons/si";
+import { FiArrowDown, FiFileText, FiMail } from "react-icons/fi";
 import { profileData } from "../../data/profile";
 import LottieAnimation from "../ui/LottieAnimation";
 
@@ -17,7 +10,6 @@ const Hero = () => {
   const [cursorVisible, setCursorVisible] = useState(true);
 
   useEffect(() => {
-    // Blinking cursor effect
     const interval = setInterval(() => {
       setCursorVisible((prev) => !prev);
     }, 500);
@@ -48,7 +40,6 @@ const Hero = () => {
         <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-indigo-500/5 rounded-full blur-3xl" />
       </div>
 
-      {/* Lottie animation (subtle) */}
       {animationData && (
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <LottieAnimation
@@ -172,7 +163,7 @@ const Hero = () => {
                     <span className="text-yellow-400">'Java'</span>,{" "}
                     <span className="text-yellow-400">'JavaScript'</span>,{" "}
                     <span className="text-yellow-400">'React'</span>,{" "}
-                    <span className="text-yellow-400">'React Native'</span>,{" "}
+                    <span className="text-yellow-400">'SQL'</span>,{" "}
                     <span className="text-yellow-400">'Python'</span>,{" "}
                     <span className="text-yellow-400">'Node.js'</span>],
                   </div>
