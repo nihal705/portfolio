@@ -5,21 +5,14 @@ import { skillsData } from "../../data/skillsData";
 
 const Skills = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-
-  // Duplicate skills for seamless looping
-  const allSkills = [...skillsData, ...skillsData, ...skillsData];
+  const allSkills = [...skillsData, ...skillsData];
 
   return (
-    // 1. CHANGED: Removed "section-container". Added "w-full px-4 sm:px-6 py-16".
-    // This makes the section stretch edge-to-edge, while keeping some padding so
-    // the gradient shadows don't get cut off on the edges.
     <section id="skills" className="w-full px-4 sm:px-6 py-16" ref={ref}>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
-        // 2. ADDED: "max-w-7xl mx-auto". This keeps the Title centered nicely
-        // exactly where it was before, while the background of the section expands.
         className="max-w-7xl mx-auto"
       >
         <h2 className="section-title">
@@ -28,18 +21,17 @@ const Skills = () => {
 
         {/* Single Infinite Scrolling Row */}
         <div className="relative overflow-hidden py-8">
-          {/* Gradient overlays for smooth edges */}
           <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-dark-200 to-transparent z-10" />
           <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-dark-200 to-transparent z-10" />
 
           <motion.div
-            className="flex gap-6 whitespace-nowrap"
+            className="flex gap-6 whitespace-nowrap w-max"
             animate={{
-              x: [0, -1000],
+              x: ["0%", "-50%"], 
             }}
             transition={{
               x: {
-                duration: 30,
+                duration: 20, 
                 repeat: Infinity,
                 ease: "linear",
               },
@@ -70,7 +62,6 @@ const Skills = () => {
           </motion.div>
         </div>
 
-        {/* Hover Pause */}
         <style>{`
           .skills-row:hover {
             animation-play-state: paused !important;
