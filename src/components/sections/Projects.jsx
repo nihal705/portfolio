@@ -26,16 +26,11 @@ const Projects = () => {
   };
 
   return (
-    // 1. CHANGED: Removed "section-container" and added "w-full" so it spans edge-to-edge.
-    // Added "px-4 sm:px-6" so the content doesn't touch the absolute edges of the screen.
     <section id="projects" className="w-full px-4 sm:px-6 py-16" ref={ref}>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
-        // 2. ADDED: "max-w-7xl mx-auto" here.
-        // This keeps your Title, Grid, and Footer visually centered on the screen,
-        // while the parent section stretches edge-to-edge.
         className="max-w-7xl mx-auto"
       >
         <h2 className="section-title">
@@ -48,7 +43,7 @@ const Projects = () => {
           animate={inView ? "visible" : "hidden"}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {projectsData.map((project, index) => (
+          {projectsData.map((project) => (
             <motion.div
               key={project.id}
               variants={itemVariants}
@@ -62,6 +57,7 @@ const Projects = () => {
                   <img
                     src={project.image}
                     alt={project.title}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 ) : (
@@ -69,6 +65,7 @@ const Projects = () => {
                     {project.icon || "🚀"}
                   </div>
                 )}
+
                 {/* Overlay on hover */}
                 <div
                   className={`absolute inset-0 bg-gradient-to-t from-dark-200 via-transparent to-transparent transition-opacity duration-300 ${
@@ -76,7 +73,7 @@ const Projects = () => {
                   }`}
                 />
 
-                {/* Tech stack badge */}
+                {/* Tech stack badges */}
                 <div className="absolute top-3 right-3 flex gap-1">
                   {project.techStack.slice(0, 3).map((tech, i) => (
                     <span
@@ -106,7 +103,7 @@ const Projects = () => {
                   {project.description}
                 </p>
 
-                {/* Links */}
+                {/* External links – these open in new tabs */}
                 <div className="flex items-center gap-3 mt-4 pt-4 border-t border-white/5">
                   {project.githubUrl && (
                     <a
@@ -114,6 +111,7 @@ const Projects = () => {
                       target="_blank"
                       rel="noopener"
                       className="text-gray-400 hover:text-white transition-colors p-1.5 hover:bg-white/10 rounded-lg"
+                      aria-label="GitHub link"
                     >
                       <FiGithub size={18} />
                     </a>
@@ -124,6 +122,7 @@ const Projects = () => {
                       target="_blank"
                       rel="noopener"
                       className="text-gray-400 hover:text-white transition-colors p-1.5 hover:bg-white/10 rounded-lg"
+                      aria-label="Live demo link"
                     >
                       <FiExternalLink size={18} />
                     </a>
@@ -135,7 +134,7 @@ const Projects = () => {
                       rel="noopener"
                       className="ml-auto text-sm text-accent-gold hover:text-yellow-400 transition-colors flex items-center gap-1"
                     >
-                      Details <FiChevronRight size={14} />
+                      README <FiChevronRight size={14} />
                     </a>
                   )}
                 </div>

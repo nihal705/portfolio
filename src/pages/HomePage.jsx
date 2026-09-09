@@ -1,17 +1,22 @@
+import { lazy, Suspense } from 'react'
 import Hero from '../components/sections/Hero'
 import About from '../components/sections/About'
-import Projects from '../components/sections/Projects'
-import Skills from '../components/sections/Skills'
-import Contact from '../components/sections/Contact'
+
+// Lazy load below-the-fold sections
+const Skills = lazy(() => import('../components/sections/Skills'))
+const Projects = lazy(() => import('../components/sections/Projects'))
+const Contact = lazy(() => import('../components/sections/Contact'))
 
 const HomePage = () => {
   return (
     <>
       <Hero />
       <About />
-      <Skills />
-      <Projects />
-      <Contact />
+      <Suspense fallback={<div className="h-40 flex items-center justify-center"><div className="text-gray-500">Loading...</div></div>}>
+        <Skills />
+        <Projects />
+        <Contact />
+      </Suspense>
     </>
   )
 }
