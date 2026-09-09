@@ -20,7 +20,8 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen)
   const closeMenu = () => setIsOpen(false)
 
-  const navItems = ['About', 'Projects', 'Skills', 'Contact']
+  // Order matches page sections: About, Skills, Projects, Contact
+  const navItems = ['About', 'Skills', 'Projects', 'Contact']
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -30,7 +31,6 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <a
             href="#hero"
-            onClick={(e) => handleSmoothScroll(e, 'hero')}
             className="text-xl font-display font-bold cursor-pointer"
           >
             <span className="text-white">Nihal</span>

@@ -1,4 +1,4 @@
-import { SiLeetcode } from 'react-icons/si'
+// frontend/src/components/common/Footer.jsx
 import { profileData } from '../../data/profile'
 
 const Footer = () => {
@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="border-t border-white/10 py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
         <p className="text-sm text-gray-500">
-          © {new Date().getFullYear()} {profileData.name}. All rights reserved.
+          © 2026 G Nihal. All rights reserved.
         </p>
       </div>
     </footer>
