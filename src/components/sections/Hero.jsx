@@ -1,14 +1,22 @@
 // frontend/src/components/sections/Hero.jsx
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { FiArrowDown, FiFileText, FiMail } from "react-icons/fi";
+import { useState, useEffect, useRef } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import { FiArrowDown, FiMail } from "react-icons/fi";
 import { profileData } from "../../data/profile";
 import LottieAnimation from "../ui/LottieAnimation";
+import Button from "../common/Button";
 
 const Hero = () => {
   const [animationData, setAnimationData] = useState(null);
   const [cursorVisible, setCursorVisible] = useState(true);
 
+  // Cursor-following glow
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const glowX = useSpring(mouseX, { stiffness: 100, damping: 20 });
+  const glowY = useSpring(mouseY, { stiffness: 100, damping: 20 });
+
+  // Blinking cursor effect (as before)
   useEffect(() => {
     const interval = setInterval(() => {
       setCursorVisible((prev) => !prev);
@@ -16,22 +24,26 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Fetch Lottie animation (only local, no fallback CDN)
   useEffect(() => {
     fetch("/animation.json")
       .then((res) => res.json())
       .then((data) => setAnimationData(data))
-      .catch(() => {
-        fetch("https://assets10.lottiefiles.com/packages/lf20_p1qi79kr.json")
-          .then((res) => res.json())
-          .then((data) => setAnimationData(data))
-          .catch(() => null);
-      });
+      .catch(() => setAnimationData(null));
   }, []);
+
+  // Mouse tracking for glow
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left - rect.width / 2);
+    mouseY.set(e.clientY - rect.top - rect.height / 2);
+  };
 
   return (
     <section
       id="hero"
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      onMouseMove={handleMouseMove}
     >
       {/* Background with subtle gradient and glow */}
       <div className="absolute inset-0 bg-dark-200">
@@ -39,6 +51,15 @@ const Hero = () => {
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-accent-gold/5 to-transparent" />
         <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-indigo-500/5 rounded-full blur-3xl" />
       </div>
+
+      {/* Cursor-following glow */}
+      <motion.div
+        style={{
+          x: glowX,
+          y: glowY,
+        }}
+        className="absolute w-64 h-64 rounded-full bg-accent-gold/10 blur-3xl pointer-events-none"
+      />
 
       {animationData && (
         <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -72,49 +93,28 @@ const Hero = () => {
               </h1>
             </div>
 
-            {/* Title */}
-            {/* <p className="text-xl text-gray-300 flex items-center gap-2">
-              <span className="w-8 h-px bg-accent-gold/40" />
-                <span>
-                  Software Engineer
-                  <span className="text-accent-gold"> • </span>
-                  Full Stack Developer
-                </span>
-              <span className="w-8 h-px bg-accent-gold/40" />
-            </p> */}
-
-            {/* Bio */}
             <p className="text-gray-400 max-w-md leading-relaxed">
               {profileData.bio}
             </p>
 
-            {/* Buttons with hover animations */}
+            {/* Buttons with magnetic hover using Button component */}
             <div className="flex flex-wrap gap-4 pt-2">
-              <motion.a
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 0 30px rgba(255,215,0,0.3)",
-                }}
-                whileTap={{ scale: 0.95 }}
+              <Button
+                variant="primary"
                 href="#contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-accent-gold text-dark-200 rounded-xl font-semibold shadow-lg shadow-accent-gold/25 transition-all duration-300"
+                icon={<FiMail size={18} />}
+                magnetic
               >
-                <FiMail size={18} />
                 Let's Talk
-              </motion.a>
-              <motion.a
-                whileHover={{
-                  scale: 1.05,
-                  backgroundColor: "rgba(255,255,255,0.05)",
-                }}
-                whileTap={{ scale: 0.95 }}
+              </Button>
+              <Button
+                variant="secondary"
                 href="/assets/resume.pdf"
                 download
-                className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/20 text-white rounded-xl font-semibold hover:bg-white/5 transition-all duration-300"
+                magnetic
               >
-                <FiFileText size={18} />
                 Resume
-              </motion.a>
+              </Button>
             </div>
           </motion.div>
 
@@ -188,7 +188,6 @@ const Hero = () => {
                       Ready to collaborate
                     </span>
                   </div>
-                  {/* Animated typing line */}
                   <div className="mt-4 flex items-center">
                     <span className="text-gray-500">$</span>
                     <span className="ml-2 text-accent-gold">npm run build</span>

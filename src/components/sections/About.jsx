@@ -1,9 +1,10 @@
 // frontend/src/components/sections/About.jsx
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { FiDownload, FiGithub, FiLinkedin } from "react-icons/fi";
+import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { SiLeetcode } from "react-icons/si";
 import { profileData } from "../../data/profile";
+import Button from "../common/Button";   // NEW
 
 const About = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -20,7 +21,6 @@ const About = () => {
           <span className="text-accent-gold">/</span> About Me
         </h2>
 
-        {/* Removed items-center */}
         <div className="grid md:grid-cols-2 gap-12">
           {/* Left - Profile Image */}
           <motion.div
@@ -30,15 +30,13 @@ const About = () => {
             className="relative justify-self-center"
           >
             <div className="relative group">
-              {/* 1. CHANGED: max-w-sm to max-w-xs (even smaller!) */}
               <div className="w-full max-w-xs aspect-square rounded-2xl overflow-hidden border-2 border-accent-gold/30 shadow-[0_0_60px_rgba(255,215,0,0.1)]">
                 <img
-                  src="/assets/profile.png"
+                  src={profileData.avatar}   // uses data
                   alt={profileData.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              {/* Decorative rings */}
               <div className="absolute -inset-3 rounded-2xl bg-gradient-to-r from-accent-gold via-transparent to-accent-gold opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500 pointer-events-none" />
               <div className="absolute -inset-1 rounded-2xl border border-accent-gold/10 pointer-events-none" />
             </div>
@@ -74,14 +72,13 @@ const About = () => {
 
             {/* Social & Resume */}
             <div className="flex flex-wrap items-center gap-4 pt-4">
-              <a
+              <Button
+                variant="primary"
                 href="/assets/resume.pdf"
                 download
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-gold text-dark-200 rounded-lg font-medium hover:bg-yellow-400 transition-all duration-300 hover:scale-105"
               >
-                <FiDownload size={18} />
                 Download Resume
-              </a>
+              </Button>
               <div className="flex gap-2">
                 <a
                   href={profileData.social.github}
