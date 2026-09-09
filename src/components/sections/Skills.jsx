@@ -1,11 +1,27 @@
 // frontend/src/components/sections/Skills.jsx
-import { motion } from "framer-motion";
+import { motion, useAnimationControls } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useState } from "react";
 import { skillsData } from "../../data/skillsData";
 
 const Skills = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [hovered, setHovered] = useState(false);
+  const controls = useAnimationControls();
   const allSkills = [...skillsData, ...skillsData];
+
+  // Pause/resume the marquee on hover
+  const handleHoverStart = () => {
+    setHovered(true);
+    controls.stop();
+  };
+  const handleHoverEnd = () => {
+    setHovered(false);
+    controls.start({
+      x: ["0%", "-50%"],
+      transition: { duration: 20, repeat: Infinity, ease: "linear" }
+    });
+  };
 
   return (
     <section id="skills" className="w-full px-4 sm:px-6 py-16" ref={ref}>
@@ -26,16 +42,11 @@ const Skills = () => {
 
           <motion.div
             className="flex gap-6 whitespace-nowrap w-max"
-            animate={{
-              x: ["0%", "-50%"], 
-            }}
-            transition={{
-              x: {
-                duration: 20, 
-                repeat: Infinity,
-                ease: "linear",
-              },
-            }}
+            animate={controls}
+            initial={{ x: "0%" }}
+            onHoverStart={handleHoverStart}
+            onHoverEnd={handleHoverEnd}
+            style={{ width: "max-content" }}
           >
             {allSkills.map((skill, index) => (
               <motion.div
@@ -62,11 +73,7 @@ const Skills = () => {
           </motion.div>
         </div>
 
-        <style>{`
-          .skills-row:hover {
-            animation-play-state: paused !important;
-          }
-        `}</style>
+        {/* The old <style> block is removed */}
       </motion.div>
     </section>
   );
