@@ -1,35 +1,40 @@
-import emailjs from '@emailjs/browser'
-
-// Get your EmailJS credentials from .env
-const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
-const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
-const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-
-// Initialize EmailJS with your public key
-emailjs.init(PUBLIC_KEY)
+// src/utils/emailService.js
 
 export const sendEmail = async (formData) => {
   try {
-    const templateParams = {
-      from_name: formData.name,
-      from_email: formData.email,
-      message: formData.message,
-      to_name: 'Nihal',
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    // Read as text first to safely handle non-JSON responses
+    const text = await response.text();
+
+    let data = {};
+    try {
+      data = text ? JSON.parse(text) : {};
+    } catch {
+      console.error("Non-JSON response from /api/contact:", text);
+      return {
+        success: false,
+        error: "Server error. Please try again later.",
+      };
     }
 
-    const response = await emailjs.send(
-      SERVICE_ID,
-      TEMPLATE_ID,
-      templateParams,
-      PUBLIC_KEY
-    )
+    if (!response.ok) {
+      return {
+        success: false,
+        error: data.error || "Failed to send message. Please try again.",
+      };
+    }
 
-    return { success: true, response }
+    return { success: true };
   } catch (error) {
-    console.error('Email sending failed:', error)
-    return { 
-      success: false, 
-      error: error.text || 'Failed to send message. Please try again.'
-    }
+    console.error("Email sending failed:", error);
+    return {
+      success: false,
+      error: "Network error. Please check your connection and try again.",
+    };
   }
-}
+};
