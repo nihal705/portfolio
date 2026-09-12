@@ -1,5 +1,5 @@
-// frontend/src/components/sections/Contact.jsx
-import { useState } from "react";
+// src/components/sections/Contact.jsx
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
@@ -22,10 +22,12 @@ const Contact = () => {
     name: "",
     email: "",
     message: "",
+    honeypot: "",
   });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(null);
+  const formStartTime = useRef(Date.now());
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,18 +39,24 @@ const Contact = () => {
     setLoading(true);
     setError(null);
 
+    const payload = {
+      ...formData,
+      formStartTime: formStartTime.current,
+    };
+
     try {
-      const result = await sendEmail(formData);
+      const result = await sendEmail(payload);
       if (result.success) {
         setSubmitted(true);
         toast.success("Message sent successfully! 🎉");
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", message: "", honeypot: "" });
+        formStartTime.current = Date.now();
         setTimeout(() => setSubmitted(false), 5000);
       } else {
         setError(result.error || "Failed to send message");
         toast.error(result.error || "Failed to send message");
       }
-    } catch (error) {
+    } catch (err) {
       setError("Something went wrong. Please try again.");
       toast.error("Something went wrong. Please try again.");
     } finally {
@@ -81,7 +89,6 @@ const Contact = () => {
           <span className="text-accent-gold">/</span> Let's Connect
         </h2>
 
-        {/* Grid: Form takes 70% (2.3fr), Links take 30% (0.7fr) */}
         <div className="grid lg:grid-cols-[2.3fr_0.7fr] gap-10 lg:gap-14 items-start">
           {/* LEFT SIDE - FORM */}
           <motion.div
@@ -101,7 +108,26 @@ const Contact = () => {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5 relative">
+                {/* Honeypot – invisible to humans, bots fill it */}
+                <input
+                  type="text"
+                  name="honeypot"
+                  value={formData.honeypot}
+                  onChange={handleChange}
+                  autoComplete="off"
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute",
+                    left: "-9999px",
+                    width: "1px",
+                    height: "1px",
+                    opacity: 0,
+                    pointerEvents: "none",
+                  }}
+                />
+
                 <div>
                   <label
                     htmlFor="name"
@@ -190,7 +216,7 @@ const Contact = () => {
             )}
           </motion.div>
 
-          {/* RIGHT SIDE - SOCIAL LINKS (30%) - Clean & Minimal */}
+          {/* RIGHT SIDE - SOCIAL LINKS */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -201,7 +227,6 @@ const Contact = () => {
               Connect
             </h3>
 
-            {/* Social Cards */}
             <a
               href={profileData.social.github}
               target="_blank"
@@ -233,6 +258,21 @@ const Contact = () => {
             </a>
 
             <a
+              href={profileData.social.leetcode}
+              target="_blank"
+              rel="noopener"
+              className="flex items-center gap-3 px-4 py-3 glass rounded-xl border border-white/5 hover:border-accent-gold/50 hover:bg-accent-gold/10 transition-all duration-300 group"
+            >
+              <SiLeetcode
+                size={18}
+                className="text-gray-400 group-hover:text-accent-gold transition-colors"
+              />
+              <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
+                LeetCode
+              </span>
+            </a>
+
+            <a
               href={`mailto:${profileData.social.email}`}
               className="flex items-center gap-3 px-4 py-3 glass rounded-xl border border-white/5 hover:border-accent-gold/50 hover:bg-accent-gold/10 transition-all duration-300 group"
             >
@@ -259,10 +299,8 @@ const Contact = () => {
               </span>
             </a>
 
-            {/* Divider */}
             <div className="my-4 border-t border-white/5" />
 
-            {/* Availability Badge */}
             <div className="px-4 py-2">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
