@@ -2,7 +2,7 @@
 
 My personal portfolio website — built to showcase my projects, skills, and background.
 
-🔗 **Live:** [gnihal.vercel.app](https://gnihal.vercel.app)
+🔗 **Live:** [www.gnihal.com](https://www.gnihal.com)
 
 ## Features
 
