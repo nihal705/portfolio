@@ -74,8 +74,8 @@ const About = () => {
             <div className="flex flex-wrap items-center gap-4 pt-4">
               <Button
                 variant="primary"
-                href="/assets/resume.pdf"
-                download
+                href="/assets/G-Nihal-resume.pdf"
+                download="G Nihal - resume.pdf"
               >
                 Download Resume
               </Button>

@@ -109,8 +109,8 @@ const Hero = () => {
               </Button>
               <Button
                 variant="secondary"
-                href="/assets/resume.pdf"
-                download
+                href="/assets/G-Nihal-resume.pdf"
+                download="G Nihal - resume.pdf"
                 magnetic
               >
                 Resume
