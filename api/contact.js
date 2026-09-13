@@ -74,9 +74,10 @@ export default async function handler(req, res) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        service_id: process.env.VITE_EMAILJS_SERVICE_ID,
-        template_id: process.env.VITE_EMAILJS_TEMPLATE_ID,
-        user_id: process.env.VITE_EMAILJS_PUBLIC_KEY,
+        service_id: process.env.EMAILJS_SERVICE_ID,
+        template_id: process.env.EMAILJS_TEMPLATE_ID,
+        user_id: process.env.EMAILJS_PUBLIC_KEY,
+        accessToken: process.env.EMAILJS_PRIVATE_KEY, ==
         template_params: {
           from_name: name,
           from_email: email,
@@ -88,7 +89,7 @@ export default async function handler(req, res) {
 
     if (!response.ok) {
       const text = await response.text();
-      console.error("EmailJS error:", text);
+      console.error("EmailJS error:", text); 
       return res.status(500).json({ error: "Failed to send email. Please try again later." });
     }
 
