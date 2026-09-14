@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { SiLeetcode } from "react-icons/si";
 import { profileData } from "../../data/profile";
-import Button from "../common/Button";   // NEW
+import Button from "../common/Button"; // NEW
 
 const About = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -32,7 +32,7 @@ const About = () => {
             <div className="relative group">
               <div className="w-full max-w-xs aspect-square rounded-2xl overflow-hidden border-2 border-accent-gold/30 shadow-[0_0_60px_rgba(255,215,0,0.1)]">
                 <img
-                  src={profileData.avatar}   // uses data
+                  src={profileData.avatar} // uses data
                   alt={profileData.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -51,23 +51,25 @@ const About = () => {
           >
             <p className="text-gray-300 leading-relaxed text-base">
               My name is G Nihal, I'm a Computer Science and Engineering (CSE)
-              student with a strong interest in Full Stack Development. I enjoy
-              building scalable web and mobile applications while continuously
-              strengthening my problem-solving skills through Data Structures
-              and Algorithms.
+              student and Software Developer with a strong interest in building
+              practical web and mobile applications. I enjoy developing
+              real-world software while continuously strengthening my
+              problem-solving skills through Data Structures and Algorithms.
             </p>
 
             <p className="text-gray-300 leading-relaxed">
               My current focus is Full Stack Development, React Native, and Data
               Structures & Algorithms, complemented by hands-on projects that
-              strengthen my software engineering skills. I'm also building a
-              foundation in Data Science to broaden my technical expertise.
+              strengthen my software engineering skills. I'm continuously
+              learning new technologies and improving my development skills
+              through practical experience.
             </p>
 
             <p className="text-gray-300 leading-relaxed">
               I enjoy learning modern technologies, turning ideas into practical
               software, and continuously improving through real-world projects
-              and hands-on development.
+              and hands-on development. I believe in learning by building and
+              growing with every project I work on.
             </p>
 
             {/* Social & Resume */}
