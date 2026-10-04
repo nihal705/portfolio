@@ -10,7 +10,6 @@ import {
   FiLoader,
   FiAlertCircle,
 } from "react-icons/fi";
-import { SiLeetcode } from "react-icons/si";
 import { sendEmail } from "../../utils/emailService";
 import { profileData } from "../../data/profile";
 import LogoMyCodeNotes from "../common/LogoMyCodeNotes";
@@ -254,21 +253,6 @@ const Contact = () => {
               />
               <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
                 LinkedIn
-              </span>
-            </a>
-
-            <a
-              href={profileData.social.leetcode}
-              target="_blank"
-              rel="noopener"
-              className="flex items-center gap-3 px-4 py-3 glass rounded-xl border border-white/5 hover:border-accent-gold/50 hover:bg-accent-gold/10 transition-all duration-300 group"
-            >
-              <SiLeetcode
-                size={18}
-                className="text-gray-400 group-hover:text-accent-gold transition-colors"
-              />
-              <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
-                LeetCode
               </span>
             </a>
 
