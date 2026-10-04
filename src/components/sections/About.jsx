@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
-import { SiLeetcode } from "react-icons/si";
 import { profileData } from "../../data/profile";
 import Button from "../common/Button"; // NEW
 
@@ -97,14 +96,6 @@ const About = () => {
                   className="p-2.5 glass rounded-lg hover:bg-accent-gold/20 transition-all duration-300 border border-white/5"
                 >
                   <FiLinkedin size={20} />
-                </a>
-                <a
-                  href={profileData.social.leetcode}
-                  target="_blank"
-                  rel="noopener"
-                  className="p-2.5 glass rounded-lg hover:bg-accent-gold/20 transition-all duration-300 border border-white/5"
-                >
-                  <SiLeetcode size={20} className="text-accent-gold" />
                 </a>
               </div>
             </div>
