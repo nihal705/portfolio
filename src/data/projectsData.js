@@ -2,15 +2,15 @@ export const projectsData = [
   {
     id: 1,
     title: 'MyCodeNotes',
-    description: 'A personal coding knowledge base with LeetCode solutions, DSA concepts, and practice problems. Built with modern tech stack.',
+    description: 'A full-stack learning platform with LeetCode solutions, DSA concepts and practice problems, plus NextraAI, a RAG-powered AI assistant, progress tracking and timed mock tests.',
     image: '/assets/projects/mycodenotes.png',
-    techStack: ['React', 'FastAPI', 'PostgreSQL', 'Tailwind'],
+    techStack: ['React', 'FastAPI', 'PostgreSQL', 'pgvector', 'Tailwind', 'Groq', 'Gemini'],
     githubUrl: 'https://github.com/nihal705/MyCodeNotes',
     detailsUrl: 'https://github.com/nihal705/MyCodeNotes/blob/main/README.md',
     liveUrl: 'https://mycodenotes.vercel.app',
     icon: '',
     featured: true,
-    longDescription: 'MyCodeNotes is a full-stack application that helps developers track their LeetCode journey, maintain DSA concepts, and practice coding problems. It features a beautiful dark/light theme, search functionality, and an admin panel for content management.',
+    longDescription: 'MyCodeNotes is a full-stack learning platform for tracking your LeetCode journey and practicing DSA. It features NextraAI, a RAG-powered assistant with streaming responses, source citations and Groq → Gemini fallback, plus email OTP login, progress tracking with streaks, AI study plans, timed mock tests, and an admin dashboard.',
   },
   {
     id: 2,
@@ -68,7 +68,7 @@ export const projectsData = [
     id: 6,
     title: 'Weather App',
     description: 'A responsive weather application built with React that allows users to search for a city and view its current weather conditions along with a 5-day forecast.',
-    image: '/assets/projects/weather-app.png', // Make sure to add a screenshot of your weather app to this path!
+    image: '/assets/projects/weather-app.png', 
     techStack: ['React', 'JavaScript', 'CSS', 'Vite', 'OpenWeather API'],
     githubUrl: 'https://github.com/nihal705/weather-app',
     detailsUrl: 'https://github.com/nihal705/weather-app#readme',
