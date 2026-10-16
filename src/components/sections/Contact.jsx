@@ -270,7 +270,7 @@ const Contact = () => {
             </a>
 
             <a
-              href="https://mycodenotes.vercel.app"
+              href="https://mycodenotes.dev"
               target="_blank"
               rel="noopener"
               className="flex items-center gap-3 px-4 py-3 glass rounded-xl border border-white/5 hover:border-accent-gold/50 hover:bg-accent-gold/10 transition-all duration-300 group"

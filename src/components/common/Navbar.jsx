@@ -1,32 +1,34 @@
 // frontend/src/components/common/Navbar.jsx
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { FiMenu, FiX } from 'react-icons/fi'
-import { profileData } from '../../data/profile'
-import LogoMyCodeNotes from './LogoMyCodeNotes'
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { FiMenu, FiX } from "react-icons/fi";
+import { profileData } from "../../data/profile";
+import LogoMyCodeNotes from "./LogoMyCodeNotes";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  const toggleMenu = () => setIsOpen(!isOpen)
-  const closeMenu = () => setIsOpen(false)
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
 
   // Order matches page sections: About, Skills, Projects, Contact
-  const navItems = ['About', 'Skills', 'Projects', 'Contact']
+  const navItems = ["About", "Skills", "Projects", "Contact"];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'glass border-b border-white/10' : 'bg-transparent'
-    }`}>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "glass border-b border-white/10" : "bg-transparent"
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center h-16">
           <a
@@ -49,7 +51,7 @@ const Navbar = () => {
               </a>
             ))}
             <a
-              href="https://mycodenotes.vercel.app"
+              href="https://mycodenotes.dev"
               target="_blank"
               rel="noopener"
               className="text-gray-400 hover:text-white transition-colors duration-300"
@@ -59,7 +61,10 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Hamburger */}
-          <button onClick={toggleMenu} className="md:hidden text-gray-300 hover:text-white">
+          <button
+            onClick={toggleMenu}
+            className="md:hidden text-gray-300 hover:text-white"
+          >
             {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
           </button>
         </div>
@@ -79,7 +84,7 @@ const Navbar = () => {
             ))}
             <div className="mt-4 pt-4 border-t border-white/10">
               <a
-                href="https://mycodenotes.vercel.app"
+                href="https://mycodenotes.dev"
                 target="_blank"
                 rel="noopener"
                 className="text-gray-400 hover:text-white transition-colors duration-300 inline-block"
@@ -92,7 +97,7 @@ const Navbar = () => {
         )}
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
