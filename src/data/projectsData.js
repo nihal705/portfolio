@@ -69,19 +69,19 @@ export const projectsData = [
   },
   {
     id: 5,
-    title: "DAILYMOOD - MindScape Wellness",
+    title: "InkWell — Article Publishing Platform",
     description:
-      "A comprehensive web-based mental wellness monitoring system with mood tracking, nutrition logging, activity monitoring, and analytics dashboard.",
-    image: "/assets/projects/dailymood.png",
-    techStack: ["React", "Node.js", "Express", "MySQL", "JWT", "Chart.js"],
-    githubUrl: "https://github.com/nihal705/Mindscape_Wellness",
+      "A full-stack article publishing platform where anyone can register, write, and submit articles, with an admin review workflow gating every post before it goes live.",
+    image: "/assets/projects/inkwell.png",
+    techStack: [".NET 10", "C#", "EF Core", "Neon PostgreSQL", "JWT", "Cloudinary", "Vanilla JavaScript", "Docker"],
+    githubUrl: "https://github.com/nihal705/inkwell",
     detailsUrl:
-      "https://github.com/nihal705/Mindscape_Wellness/blob/main/README.md",
-    liveUrl: null,
+      "https://github.com/nihal705/inkwell/blob/main/README.md",
+    liveUrl: "https://inkwell-3m7y.onrender.com",
     icon: "",
     featured: false,
     longDescription:
-      "DAILYMOOD (MindScape Wellness) is a comprehensive web-based mental wellness monitoring system that provides an interactive dashboard to track mood, nutrition, and physical activity across multiple wellness parameters. Features EMA methodology, Indian food database, activity library with MET calculations, and personalized insights.",
+      "InkWell is a multi-author article publishing platform built with .NET 10 Web API, EF Core, and Neon PostgreSQL. It features JWT authentication with BCrypt hashing, role-based access control (Reader/Editor/Admin), an editorial approval workflow where writer submissions go through admin review before publishing, and rejection feedback loops that let writers revise and resubmit. Cover images and profile pictures are uploaded to Cloudinary, and the frontend is a responsive vanilla JavaScript SPA with client-side routing, dark/light theme, and a share bar — deployed on Render via Dockerfile.",
   },
   {
     id: 6,
