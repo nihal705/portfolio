@@ -73,11 +73,19 @@ export const projectsData = [
     description:
       "A full-stack article publishing platform where anyone can register, write, and submit articles, with an admin review workflow gating every post before it goes live.",
     image: "/assets/projects/inkwell.png",
-    techStack: [".NET 10", "C#", "EF Core", "Neon PostgreSQL", "JWT", "Cloudinary", "Vanilla JavaScript", "Docker"],
+    techStack: [
+      ".NET 10",
+      "C#",
+      "EF Core",
+      "Neon PostgreSQL",
+      "JWT",
+      "Cloudinary",
+      "Vanilla JavaScript",
+      "Docker",
+    ],
     githubUrl: "https://github.com/nihal705/inkwell",
-    detailsUrl:
-      "https://github.com/nihal705/inkwell/blob/main/README.md",
-    liveUrl: "https://inkwell-3m7y.onrender.com",
+    detailsUrl: "https://github.com/nihal705/inkwell/blob/main/README.md",
+    liveUrl: "https://inkwell-magazine.vercel.app/",
     icon: "",
     featured: false,
     longDescription:
