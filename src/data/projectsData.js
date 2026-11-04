@@ -54,18 +54,18 @@ export const projectsData = [
   },
   {
     id: 4,
-    title: "WanderVibe",
+    title: "Roamly",
     description:
-      "A beautiful, interactive travel discovery platform with 50+ destinations, save favorites, mark visited places, and dark/light mode.",
-    image: "/assets/projects/wandervibe.png",
-    techStack: ["HTML", "CSS", "JavaScript", "Vercel"],
-    githubUrl: "https://github.com/nihal705/wanderVibe",
-    detailsUrl: "https://github.com/nihal705/wanderVibe/blob/main/README.md",
-    liveUrl: "https://wandervibe.vercel.app",
+      "A full-stack vacation-rental platform built with Next.js and Express that lets users discover, book, and host unique stays with secure Razorpay test checkout.",
+    image: "/assets/projects/roamly.png",
+    techStack: ["Next.js", "React", "Node.js", "Express", "MongoDB", "Razorpay"],
+    githubUrl: "https://github.com/nihal705/roamly",
+    detailsUrl: "https://github.com/nihal705/roamly#readme",
+    liveUrl: "https://roamly.gnihal.com",
     icon: "",
     featured: false,
     longDescription:
-      "WanderVibe is a beautiful, interactive travel discovery platform built with pure HTML, CSS, and JavaScript. Features 50+ destinations worldwide, save favorites with localStorage, mark visited places, search destinations by name/country/category, filter by category, dark/light mode toggle, and Google Maps integration.",
+      'A modern, full-stack vacation-rental platform built with Next.js and Express that enables guests to explore, book, and review stays. Features include multi-filter search, guest/host/admin roles, Razorpay test payments with signature verification, listing management with Cloudinary uploads, and an automated cancellation refund policy. Includes a responsive mobile UI. Built using Next.js, Express, MongoDB Atlas, and Razorpay.',
   },
   {
     id: 5,
@@ -85,17 +85,17 @@ export const projectsData = [
   },
   {
     id: 6,
-    title: "Weather App",
+    title: "WanderVibe",
     description:
-      "A responsive weather application built with React that allows users to search for a city and view its current weather conditions along with a 5-day forecast.",
-    image: "/assets/projects/weather-app.png",
-    techStack: ["React", "JavaScript", "CSS", "Vite", "OpenWeather API"],
-    githubUrl: "https://github.com/nihal705/weather-app",
-    detailsUrl: "https://github.com/nihal705/weather-app#readme",
-    liveUrl: "https://weather-app-nxhl.vercel.app",
+      "A beautiful, interactive travel discovery platform with 50+ destinations, save favorites, mark visited places, and dark/light mode.",
+    image: "/assets/projects/wandervibe.png",
+    techStack: ["HTML", "CSS", "JavaScript", "Vercel"],
+    githubUrl: "https://github.com/nihal705/wanderVibe",
+    detailsUrl: "https://github.com/nihal705/wanderVibe/blob/main/README.md",
+    liveUrl: "https://wandervibe.vercel.app",
     icon: "",
     featured: false,
     longDescription:
-      'A modern, responsive weather application built with React that allows users to search for a city and view real-time weather data. Features include current temperature, humidity, "feels like" temperature, wind speed, and atmospheric pressure. Includes a 5-day forecast, responsive design for desktop/tablet/mobile, loading and error states, and a sleek glassmorphism UI. Built using React, Vite, and the OpenWeather API.',
+      "WanderVibe is a beautiful, interactive travel discovery platform built with pure HTML, CSS, and JavaScript. Features 50+ destinations worldwide, save favorites with localStorage, mark visited places, search destinations by name/country/category, filter by category, dark/light mode toggle, and Google Maps integration.",
   },
 ];
