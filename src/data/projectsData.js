@@ -45,7 +45,7 @@ export const projectsData = [
     image: "/assets/projects/kwikcric.png",
     techStack: ["React", "TypeScript", "Node.js", "PostgreSQL", "Tailwind"],
     githubUrl: "https://github.com/nihal705/kwikcric",
-    liveUrl: "https://kwikcric.vercel.app",
+    liveUrl: "https://kwikcric.gnihal.com",
     icon: "",
     featured: true,
     detailsUrl: "https://github.com/nihal705/kwikcric/blob/main/README.md",
@@ -77,7 +77,7 @@ export const projectsData = [
     githubUrl: "https://github.com/nihal705/inkwell",
     detailsUrl:
       "https://github.com/nihal705/inkwell/blob/main/README.md",
-    liveUrl: "https://inkwell-magazine.vercel.app/",
+    liveUrl: "https://inkwell.gnihal.com",
     icon: "",
     featured: false,
     longDescription:
